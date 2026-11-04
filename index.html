@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PVS Johns Creek Pet Club</title>
+<meta name="description" content="Earn points and rewards at PVS Johns Creek. Sign in to see your balance, rewards, and offers.">
+<meta name="theme-color" content="#0B2A5B">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2A5B; --blue:#1456C4; --blue-ink:#0F43A0; --blue-soft:#E6EEFB;
+  --red:#D3283C; --red-ink:#B01E31; --red-soft:#FCE8EA;
+  --bg:#F3F6FB; --surface:#FFFFFF; --text:#0E1B33; --muted:#53617D; --line:#D3DCEC;
+  --ok:#14764A; --ok-soft:#DDF3E8; --tag:#0B2A5B; --on-tag:#FFFFFF;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --navy:#091634; --blue:#3B7BF0; --blue-ink:#7FAAFF; --blue-soft:#15264B;
+    --red:#F0485B; --red-ink:#FF8B98; --red-soft:#3A1822;
+    --bg:#0A1226; --surface:#111C38; --text:#E8EEFB; --muted:#9DAFD1; --line:#25355E;
+    --ok:#5CD59B; --ok-soft:#10372A; --tag:#0F2F6B; color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0 0 .5rem;letter-spacing:-.01em}
+h1{font-size:1.9rem;font-weight:800} h2{font-size:1.35rem;font-weight:700} h3{font-size:1.05rem;font-weight:700}
+p{margin:0 0 .75rem} .muted{color:var(--muted)} .small{font-size:.875rem}
+a{color:var(--blue-ink)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:6px}
+header.top{background:var(--navy);color:#fff;border-bottom:4px solid var(--red);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:1100px;margin:0 auto;padding:.75rem 1rem;display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.65rem;font-family:var(--display);font-weight:800;font-size:1.15rem}
+.who{display:flex;align-items:center;gap:.6rem;font-size:.85rem;flex-wrap:wrap}
+.who .btn{background:rgba(255,255,255,.14);color:#fff} .who .btn:hover{background:rgba(255,255,255,.25)}
+nav.tabs{background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs-in{max-width:1100px;margin:0 auto;padding:0 .5rem;display:flex;gap:.25rem;overflow-x:auto}
+.tabs-in button{border:0;background:none;color:var(--muted);font:600 .95rem var(--body);padding:.85rem .9rem;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tabs-in button[aria-current="page"]{color:var(--blue-ink);border-bottom-color:var(--red)}
+.badge{display:inline-block;min-width:1.4em;text-align:center;background:var(--red);color:#fff;border-radius:999px;font-size:.75rem;padding:0 .4em;margin-left:.35rem}
+main{max-width:1100px;margin:0 auto;padding:1.25rem 1rem calc(4rem + env(safe-area-inset-bottom,0px))}
+.grid{display:grid;gap:1rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem}
+.card.flat{border-radius:10px}
+.stat b{display:block;font:800 1.7rem var(--display);color:var(--blue-ink)}
+.stat span{color:var(--muted);font-size:.875rem}
+label{display:block;font-weight:600;font-size:.875rem;margin:.75rem 0 .25rem}
+input,select,textarea{width:100%;font:inherit;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.55rem .7rem;min-height:2.6rem}
+textarea{min-height:5.5rem;resize:vertical}
+input[type=checkbox]{width:auto;min-height:0;margin-right:.5rem;accent-color:var(--blue)}
+.chk{display:flex;align-items:center;font-weight:500;margin:.75rem 0}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:flex-end}.row>*{flex:1 1 160px}
+.btn{font:700 .95rem var(--body);border:0;border-radius:9px;padding:.65rem 1.1rem;cursor:pointer;background:var(--blue);color:#fff;min-height:2.6rem}
+.btn:hover{background:var(--blue-ink)} .btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.red{background:var(--red)} .btn.red:hover{background:var(--red-ink)}
+.btn.ghost{background:transparent;color:var(--blue-ink);border:1.5px solid var(--line)} .btn.ghost:hover{background:var(--blue-soft)}
+.btn.sm{padding:.35rem .7rem;min-height:2rem;font-size:.85rem}
+.btn.text{background:none;color:var(--red-ink);padding:.35rem .5rem;min-height:0} .btn.text:hover{background:var(--red-soft)}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;font-weight:700;color:var(--muted);font-size:.8rem;padding:.5rem .6rem;border-bottom:2px solid var(--line)}
+td{padding:.55rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+td input,td select{min-height:2.2rem;padding:.3rem .5rem}
+.scroll{overflow-x:auto}
+.pos{color:var(--ok);font-weight:700}.neg{color:var(--red-ink);font-weight:700}
+.pill{display:inline-block;border-radius:999px;padding:.1rem .65rem;font-size:.8rem;font-weight:700;background:var(--blue-soft);color:var(--blue-ink)}
+.pill.red{background:var(--red-soft);color:var(--red-ink)} .pill.ok{background:var(--ok-soft);color:var(--ok)}
+.bar{height:10px;border-radius:99px;background:var(--blue-soft);overflow:hidden;margin:.4rem 0}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}
+.tag{position:relative;background:var(--tag);color:var(--on-tag);border-radius:26px;padding:1.4rem 1.5rem 1.4rem 4.6rem;overflow:hidden}
+.tag::before{content:"";position:absolute;left:1.35rem;top:1.5rem;width:1.7rem;height:1.7rem;border-radius:50%;border:5px solid var(--red);background:var(--bg)}
+.tag::after{content:"";position:absolute;left:2.05rem;top:3.4rem;width:5px;height:calc(100% - 4.4rem);background:var(--red);border-radius:3px;opacity:.9}
+.tag .bal{font:800 3.4rem/1 var(--display);letter-spacing:-.03em}
+.tag .bar{background:rgba(255,255,255,.2)} .tag .bar i{background:var(--red)}
+.tag .pill{background:#fff;color:var(--navy)}
+.ladder{display:grid;gap:.5rem}
+.rung{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:.65rem .85rem;border:1.5px solid var(--line);border-radius:10px}
+.rung.on{border-color:var(--red);background:var(--red-soft)}
+.promo{border-left:6px solid var(--red);padding-left:1rem}
+.notice{border-radius:10px;padding:.75rem .95rem;background:var(--blue-soft);color:var(--text);font-size:.9rem;margin:.75rem 0}
+.notice.warn{background:var(--red-soft)}
+.subtabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.subtabs button{border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 .9rem var(--body);padding:.45rem .9rem;border-radius:999px;cursor:pointer}
+.subtabs button[aria-current="page"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.overlay{position:fixed;inset:0;background:rgba(5,12,30,.62);display:flex;align-items:center;justify-content:center;padding:1rem;z-index:50}
+.modal{background:var(--surface);border-radius:18px;max-width:460px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.modal .mh{background:var(--red);color:#fff;padding:1.2rem 1.4rem}.modal .mh h2{margin:0;font-size:1.5rem}
+.modal .mb{padding:1.2rem 1.4rem}
+.price{font:800 2.4rem var(--display);color:var(--blue-ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));background:var(--navy);color:#fff;padding:.7rem 1.1rem;border-radius:10px;z-index:60;font-weight:600;max-width:92vw;border-left:5px solid var(--red)}
+.signin{max-width:520px;margin:2rem auto}
+.foot{max-width:1100px;margin:0 auto;padding:0 1rem calc(2rem + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.85rem}
+.empty{padding:1.5rem;text-align:center;color:var(--muted);border:2px dashed var(--line);border-radius:12px}
+@media (max-width:560px){.tag{padding-left:3.8rem}.tag .bal{font-size:2.6rem}h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast-host" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+"use strict";
+/* ---------- connection (the publishable key is designed to be public) ---------- */
+const SUPABASE_URL = "https://rajldlawqyjdvhunswff.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Nh4l-D2wpshxxNeFbkFoFw_IAdrcIoT";
+const SITE_URL = "https://pvs-jc.vercel.app";
+
+/* ---------- helpers ---------- */
+const $app = document.getElementById("app");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = n => Number(n).toLocaleString("en-US");
+const money = n => "$" + Number(n).toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const ppv = v => "$" + Number(v).toFixed(4).replace(/0+$/, "").replace(/\.$/, "");
+const fdate = s => s ? new Date(s).toLocaleDateString("en-US") : "";
+const todayIso = () => new Date().toISOString().slice(0, 10);
+const nameOf = r => (r && r.clients && r.clients.full_name) || "Unknown";
+function setPath(obj, path, val) { const k = path.split("."); let o = obj; for (let i = 0; i < k.length - 1; i++) o = o[k[i]]; o[k[k.length - 1]] = val; }
+function toast(m) {
+  const h = document.getElementById("toast-host");
+  h.innerHTML = '<div class="toast" role="status">' + esc(m) + "</div>";
+  clearTimeout(toast.t); toast.t = setTimeout(() => { h.innerHTML = ""; }, 4200);
+}
+function msg(e) {
+  const m = e && e.message ? String(e.message) : "";
+  if (m.includes("clients_email_unique")) return "A client with that email already exists.";
+  if (m.includes("row-level security")) return "You don’t have permission to do that.";
+  return m || "Something went wrong. Please try again.";
+}
+async function q(p) { const r = await p; if (r.error) throw r.error; return r.data; }
+const rpc = (n, a) => q(sb.rpc(n, a || {}));
+
+let sb = null;
+try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {auth: {persistSession: true, autoRefreshToken: true, detectSessionInUrl: true}}); } catch (e) { sb = null; }
+
+const st = {ready: false, user: null, role: null, client: null, boot: null, cfg: {s: null, appts: [], tiers: [], promos: []}, d: {badge: {recipes: 0}}};
+const ui = {tab: null, settingsTab: "points", modal: null, sent: false, email: "", loading: false, busy: false,
+  awardClient: "", redeemClient: "", award: {ref: "", typeId: "", spend: ""}, filter: "", notes: {},
+  recipe: {title: "", pet: "Dogs", ingredients: "", steps: ""}, newClient: {name: "", email: "", phone: "", pets: ""},
+  newPet: {clientId: "", name: "", species: "Dog"}, team: {email: "", role: "staff"}, error: ""};
+
+/* ---------- config and calculations ---------- */
+async function loadConfig() {
+  const [s, appts, tiers, promos] = await Promise.all([
+    q(sb.from("program_settings").select("*").eq("id", 1).single()),
+    q(sb.from("appointment_types").select("*").order("name")),
+    q(sb.from("tiers").select("*").order("min_lifetime_points")),
+    q(sb.from("promotions").select("*").order("name"))
+  ]);
+  st.cfg = {s, appts, tiers, promos};
+}
+const S = () => st.cfg.s;
+const tierFor = life => { let cur = st.cfg.tiers[0]; st.cfg.tiers.forEach(t => { if (life >= t.min_lifetime_points) cur = t; }); return cur || {name: "Member", min_lifetime_points: 0, value_per_point: 0}; };
+const nextTier = life => st.cfg.tiers.find(t => t.min_lifetime_points > life);
+const rewardValue = life => Math.round(S().reward_threshold * tierFor(life).value_per_point * 100) / 100;
+const isStaff = () => st.role === "staff" || st.role === "manager";
+
+/* ---------- loaders (one per screen) ---------- */
+async function loadBadges() {
+  if (!isStaff()) return;
+  const a = await sb.from("recipes").select("id", {count: "exact", head: true}).eq("status", "pending");
+  st.d.badge = {recipes: a.count || 0};
+}
+async function refreshClient() {
+  st.client = await q(sb.from("clients").select("*, pets(*)").eq("user_id", st.user.id).maybeSingle());
+}
+async function loadInfo(id) {
+  if (!id) { st.d.info = null; return; }
+  const [c, b] = await Promise.all([q(sb.from("clients").select("*, pets(*)").eq("id", id).single()), q(sb.from("client_balances").select("*").eq("client_id", id).single())]);
+  st.d.info = {client: c, bal: b};
+}
+async function loadClientList() {
+  st.d.clients = await q(sb.from("clients").select("id, full_name, email, phone, user_id, pets(name, species)").order("full_name"));
+}
+const LOAD = {
+  async c_home() { st.d.bal = await q(sb.from("client_balances").select("*").eq("client_id", st.client.id).single()); },
+  async c_activity() { st.d.ledger = await q(sb.from("point_ledger").select("*").eq("client_id", st.client.id).order("created_at", {ascending: false}).limit(200)); },
+  async c_recipes() { st.d.myRecipes = await q(sb.from("recipes").select("*").eq("client_id", st.client.id).order("created_at", {ascending: false})); },
+  async award() { await loadClientList(); await loadInfo(ui.awardClient); st.d.recent = await q(sb.from("point_ledger").select("*, clients(full_name)").order("created_at", {ascending: false}).limit(6)); },
+  async redeem() { await loadClientList(); await loadInfo(ui.redeemClient); },
+  async s_recipes() {
+    st.d.queue = await q(sb.from("recipes").select("*, clients(full_name)").eq("status", "pending").order("created_at"));
+    st.d.rdone = await q(sb.from("recipes").select("*, clients(full_name)").neq("status", "pending").order("created_at", {ascending: false}).limit(8));
+    await loadBadges();
+  },
+  async clients() {
+    await loadClientList();
+    const b = await q(sb.from("client_balances").select("*"));
+    st.d.bmap = {}; b.forEach(x => { st.d.bmap[x.client_id] = x; });
+  },
+  async dash() {
+    const [bals, redeems, recent, cnt] = await Promise.all([
+      q(sb.from("client_balances").select("*")),
+      q(sb.from("point_ledger").select("dollars_value").eq("entry_type", "redeem")),
+      q(sb.from("point_ledger").select("*, clients(full_name)").order("created_at", {ascending: false}).limit(8)),
+      loadBadges()
+    ]);
+    st.d.dash = {bals, redeems, recent};
+  },
+  async settings() {
+    await loadConfig();
+    st.d.team = await q(sb.from("staff_roles_pending").select("*").order("email"));
+  }
+};
+async function go(tab) {
+  ui.tab = tab; ui.loading = true; render();
+  try { if (LOAD[tab]) await LOAD[tab](); } catch (e) { toast(msg(e)); }
+  ui.loading = false; render();
+}
+const reload = () => go(ui.tab);
+
+/* ---------- session ---------- */
+async function bootstrap(session) {
+  if (st.boot === session.user.id && st.role) return;
+  st.boot = session.user.id; st.user = session.user; ui.error = "";
+  try {
+    const prof = await q(sb.from("profiles").select("role").eq("id", session.user.id).maybeSingle());
+    st.role = prof ? prof.role : "client";
+    await loadConfig();
+    if (st.role === "client") {
+      try { await rpc("claim_client"); } catch (e) { /* optional helper; ignore if not installed */ }
+      await refreshClient();
+    } else { st.client = null; }
+    ui.tab = st.role === "client" ? "c_home" : st.role === "manager" ? "dash" : "award";
+    await loadBadges();
+    ui.modal = null;
+    st.ready = true; await go(ui.tab);
+  } catch (e) {
+    ui.error = msg(e); st.ready = true; st.role = st.role || "error"; render();
+  }
+}
+function resetSession() { st.user = null; st.role = null; st.client = null; st.boot = null; st.d = {badge: {recipes: 0}}; ui.modal = null; ui.sent = false; ui.error = ""; ui.awardClient = ""; ui.redeemClient = ""; }
+
+/* ---------- shared views ---------- */
+function header() {
+  const logo = '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#fff"/><circle cx="12" cy="13" r="3.2" fill="#D3283C"/><circle cx="22" cy="13" r="3.2" fill="#D3283C"/><circle cx="7.5" cy="19.5" r="2.7" fill="#1456C4"/><circle cx="26.5" cy="19.5" r="2.7" fill="#1456C4"/><path d="M17 17.5c-4 0-7 3-7 5.6 0 2 1.7 3 3.6 3 1.3 0 2.2-.5 3.4-.5s2.1.5 3.4.5c1.9 0 3.6-1 3.6-3 0-2.6-3-5.6-7-5.6z" fill="#0B2A5B"/></svg>';
+  const who = st.user ? '<div class="who"><span>' + esc(st.user.email) + '</span><span class="pill">' + esc(st.role === "manager" ? "Manager" : st.role === "staff" ? "Staff" : "Client") + '</span><button class="btn sm" data-act="signout">Sign out</button></div>' : "";
+  return '<header class="top"><div class="top-in"><div class="brand">' + logo + "<span>" + esc(st.cfg.s ? S().program_name : "PVS Johns Creek Pet Club") + "</span></div>" + who + "</div></header>";
+}
+const TABS = {
+  client: [["c_home", "Home"], ["c_activity", "Activity"], ["c_recipes", "Recipes"], ["c_offers", "Offers"]],
+  staff: [["award", "Award points"], ["redeem", "Redeem"], ["s_recipes", "Recipe reviews", "recipes"], ["clients", "Clients"]],
+  manager: [["dash", "Dashboard"], ["award", "Award points"], ["redeem", "Redeem"], ["s_recipes", "Recipe reviews", "recipes"], ["clients", "Clients"], ["settings", "Settings"]]
+};
+function tabsNav() {
+  if (!st.user || !TABS[st.role] || (st.role === "client" && !st.client)) return "";
+  return '<nav class="tabs" aria-label="Sections"><div class="tabs-in">' + TABS[st.role].map(t => {
+    const n = t[2] ? (st.d.badge[t[2]] || 0) : 0;
+    return '<button data-act="tab" data-v="' + t[0] + '"' + (ui.tab === t[0] ? ' aria-current="page"' : "") + ">" + t[1] + (n ? '<span class="badge">' + n + "</span>" : "") + "</button>";
+  }).join("") + "</div></nav>";
+}
+function signinView() {
+  if (ui.sent) return '<div class="signin card"><h1>Check your email</h1><p>We sent a sign-in link to <b>' + esc(ui.email) + '</b>. Open it on this device to finish signing in. It can take a minute to arrive, so check your spam folder too.</p><button class="btn ghost" data-act="again">Use a different email</button></div>';
+  return '<div class="signin card"><h1>Sign in</h1><p class="muted">Enter your email and we’ll send you a secure sign-in link. No password needed. Clients: use the email the clinic has on file. New to the Pet Club? Ask the front desk to add your email.</p><label for="em">Email</label><input id="em" type="email" autocomplete="email" inputmode="email" data-ui="email" value="' + esc(ui.email) + '"><p style="margin-top:1rem"><button class="btn red" data-act="sendLink">Email me a link</button></p></div>';
+}
+const footer = () => '<footer class="foot"><a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Program terms</a></footer>';
+const loadingView = () => '<div class="card"><p class="muted" style="margin:0">Loading…</p></div>';
+
+/* ---------- client views ---------- */
+function cHome() {
+  const c = st.client, b = st.d.bal || {balance: 0, lifetime: 0}, t = tierFor(b.lifetime), nt = nextTier(b.lifetime), th = S().reward_threshold;
+  const val = rewardValue(b.lifetime), pct = Math.min(100, Math.round(b.balance / th * 100));
+  const lp = nt ? Math.min(100, Math.round((b.lifetime - t.min_lifetime_points) / (nt.min_lifetime_points - t.min_lifetime_points) * 100)) : 100;
+  return '<div class="grid g2"><div class="tag"><div class="small" style="opacity:.85">Hi ' + esc(c.full_name.split(" ")[0]) + ', you have</div><div class="bal">' + fmt(b.balance) + '</div><div style="margin-bottom:.6rem">points <span class="pill" style="margin-left:.4rem">' + esc(t.name) + "</span></div>" +
+    '<div class="small">' + (b.balance >= th ? "<b>Reward ready:</b> " + money(val) + " off eligible veterinary services. Ask the front desk to apply it." : fmt(th - b.balance) + " points until a " + money(val) + " reward") + '</div><div class="bar" aria-hidden="true"><i style="width:' + pct + '%"></i></div><div class="small" style="opacity:.85">Each point is worth ' + ppv(t.value_per_point) + " at " + esc(t.name) + ". " + fmt(th) + " points = " + money(val) + ".</div></div>" +
+    '<div class="card"><h2>Your level: ' + esc(t.name) + "</h2>" + (nt ? '<p class="muted">' + fmt(nt.min_lifetime_points - b.lifetime) + " more points to reach " + esc(nt.name) + ", where points are worth " + ppv(nt.value_per_point) + ' each.</p><div class="bar"><i style="width:' + lp + '%"></i></div>' : '<p class="muted">You’ve reached our highest level.</p>') +
+    '<p class="small muted">Levels use all points you’ve ever earned, so redeeming a reward never lowers your level.</p>' + "</div></div>" +
+    '<div class="grid g2" style="margin-top:1rem"><div class="card"><h3>Levels</h3><div class="ladder">' + st.cfg.tiers.map(x => '<div class="rung' + (x.id === t.id ? " on" : "") + '"><span><b>' + esc(x.name) + '</b><br><span class="small muted">' + fmt(x.min_lifetime_points) + '+ lifetime points</span></span><span style="text-align:right"><b>' + ppv(x.value_per_point) + '</b> per point<br><span class="small muted">' + fmt(th) + " pts = " + money(th * x.value_per_point) + "</span></span></div>").join("") + '</div></div><div class="card"><h3>Your pets</h3>' +
+    ((c.pets || []).length ? c.pets.map(p => '<p style="margin:.3rem 0"><b>' + esc(p.name) + '</b> <span class="muted">' + esc(p.species) + "</span></p>").join("") : '<div class="empty">No pets on file yet. Ask the front desk to add yours.</div>') + "</div></div>";
+}
+function cActivity() {
+  const rows = st.d.ledger || [];
+  return '<div class="card"><h2>Activity</h2>' + (rows.length ? '<div class="scroll"><table><thead><tr><th>Date</th><th>Description</th><th>Reference</th><th style="text-align:right">Points</th></tr></thead><tbody>' + rows.map(e => "<tr><td>" + esc(fdate(e.created_at)) + "</td><td>" + esc(e.note) + "</td><td>" + esc(e.invoice_ref || "") + '</td><td style="text-align:right" class="' + (e.points >= 0 ? "pos" : "neg") + '">' + (e.points >= 0 ? "+" : "") + fmt(e.points) + "</td></tr>").join("") + "</tbody></table></div>" : '<div class="empty">Points you earn will appear here.</div>') + "</div>";
+}
+function cRecipes() {
+  const R = S(), mine = st.d.myRecipes || [], mk = new Date().toISOString().slice(0, 7);
+  const used = mine.filter(r => r.status !== "declined" && String(r.created_at).slice(0, 7) === mk).length, left = Math.max(0, R.recipe_max_per_month - used);
+  const form = !R.recipe_enabled ? '<div class="empty">Recipe rewards are paused right now.</div>' :
+    '<p class="muted">Earn <b>' + fmt(R.recipe_points) + " points</b> for each approved recipe. " + esc(R.recipe_guidelines) + " You have <b>" + left + "</b> of " + R.recipe_max_per_month + " submissions left this month.</p>" +
+    '<label for="r-title">Recipe name</label><input id="r-title" data-ui="recipe.title" maxlength="80" value="' + esc(ui.recipe.title) + '">' +
+    '<label for="r-pet">Made for</label><select id="r-pet" data-ui="recipe.pet">' + ["Dogs", "Cats", "Dogs and cats"].map(x => "<option" + (ui.recipe.pet === x ? " selected" : "") + ">" + x + "</option>").join("") + "</select>" +
+    '<label for="r-ing">Ingredients</label><textarea id="r-ing" data-ui="recipe.ingredients" placeholder="One per line, with amounts">' + esc(ui.recipe.ingredients) + "</textarea>" +
+    '<label for="r-steps">Directions</label><textarea id="r-steps" data-ui="recipe.steps">' + esc(ui.recipe.steps) + "</textarea>" +
+    '<p style="margin-top:1rem"><button class="btn red" data-act="submitRecipe"' + (left ? "" : " disabled") + ">Submit recipe</button></p>";
+  return '<div class="grid g2"><div class="card"><h2>Share a recipe</h2>' + form + '</div><div class="card"><h2>Your recipes</h2>' + (mine.length ? mine.map(r => '<div class="card flat" style="margin-bottom:.6rem"><div style="display:flex;justify-content:space-between;gap:.5rem"><b>' + esc(r.title) + '</b><span class="pill ' + (r.status === "approved" ? "ok" : r.status === "declined" ? "red" : "") + '">' + (r.status === "approved" ? "Approved, +" + fmt(r.points_awarded) + " pts" : r.status === "declined" ? "Not approved" : "In review") + "</span></div>" + (r.review_note ? '<p class="small muted" style="margin:.4rem 0 0">Clinic note: ' + esc(r.review_note) + "</p>" : "") + "</div>").join("") : '<div class="empty">Recipes you submit will show their review status here.</div>') + "</div></div>";
+}
+function cOffers() {
+  const promos = st.cfg.promos.filter(p => p.active);
+  return '<div class="card"><h2>Current promotions</h2>' + (promos.length ? promos.map(p => '<div class="promo" style="margin:.8rem 0"><b>' + esc(p.name) + '</b> <span class="pill red">' + (p.kind === "percent" ? p.value + "% off" : money(p.value) + " off") + '</span><p class="small muted" style="margin:.2rem 0 0">' + esc(p.note) + "</p></div>").join("") : '<div class="empty">No promotions right now. Check back soon.</div>') + "</div>";
+}
+
+/* ---------- staff views ---------- */
+function pickOptions(sel) {
+  const f = ui.filter.trim().toLowerCase();
+  return '<option value="">Choose a client…</option>' + (st.d.clients || []).filter(c => !f || c.id === sel || (c.full_name + " " + c.email + " " + (c.pets || []).map(p => p.name).join(" ")).toLowerCase().includes(f)).map(c => '<option value="' + c.id + '"' + (sel === c.id ? " selected" : "") + ">" + esc(c.full_name) + (c.pets && c.pets.length ? " (" + esc(c.pets.map(p => p.name).join(", ")) + ")" : "") + "</option>").join("");
+}
+function picker(sel) {
+  return '<label for="cf">Find a client</label><input id="cf" data-ui="filter" placeholder="Type a name, email, or pet" value="' + esc(ui.filter) + '"><label for="pick">Client</label><select id="pick" data-pick>' + pickOptions(sel) + "</select>";
+}
+function brief() {
+  const i = st.d.info; if (!i) return "";
+  const t = tierFor(i.bal.lifetime);
+  return '<div class="notice"><b>' + esc(i.client.full_name) + "</b>: " + fmt(i.bal.balance) + " points, " + esc(t.name) + " level (" + ppv(t.value_per_point) + " per point)" + "</div>";
+}
+function awardPreview() {
+  const a = ui.award, t = st.cfg.appts.find(x => x.id === a.typeId), spend = parseFloat(a.spend);
+  if (!t && !(spend > 0)) return "Choose an appointment type and enter the eligible spend.";
+  const p = spend > 0 ? Math.floor(spend * S().points_per_dollar) : 0, b = t ? t.bonus_points : 0;
+  return "Purchase points " + fmt(p) + " + visit bonus " + fmt(b) + " = <b>" + fmt(p + b) + " points</b>";
+}
+function vAward() {
+  const a = ui.award, recent = st.d.recent || [];
+  return '<div class="grid g2"><div class="card"><h2>Award points</h2><p class="muted">Enter an eligible purchase or visit after checkout.</p>' + picker(ui.awardClient) + brief() +
+    '<div class="row"><div><label for="a-ref">Invoice or visit number</label><input id="a-ref" data-ui="award.ref" value="' + esc(a.ref) + '" placeholder="INV-1203"></div><div><label for="a-spend">Eligible spend ($)</label><input id="a-spend" type="number" min="0" step="0.01" inputmode="decimal" data-ui="award.spend" value="' + esc(a.spend) + '"></div></div>' +
+    '<label for="a-type">Appointment type</label><select id="a-type" data-ui="award.typeId"><option value="">Choose a type…</option>' + st.cfg.appts.filter(t => t.active).map(t => '<option value="' + t.id + '"' + (a.typeId === t.id ? " selected" : "") + ">" + esc(t.name) + " (+" + t.bonus_points + " bonus)</option>").join("") + '</select><div class="notice" id="award-preview" style="margin-top:1rem">' + awardPreview() + '</div><button class="btn" data-act="award">Add points</button></div>' +
+    '<div class="card"><h2>Recent activity</h2>' + (recent.length ? recent.map(e => '<p style="margin:.4rem 0"><span class="' + (e.points >= 0 ? "pos" : "neg") + '">' + (e.points >= 0 ? "+" : "") + fmt(e.points) + "</span> " + esc(nameOf(e)) + '<br><span class="small muted">' + esc(e.note) + " · " + esc(fdate(e.created_at)) + "</span></p>").join("") : '<div class="empty">No activity yet.</div>') + "</div></div>";
+}
+function vRedeem() {
+  const i = st.d.info, th = S().reward_threshold; let body = "";
+  if (i) { const val = rewardValue(i.bal.lifetime), ok = i.bal.balance >= th; body = brief() + "<p>Reward: <b>" + fmt(th) + " points = " + money(val) + "</b> off eligible veterinary services.</p>" + (ok ? "" : '<div class="notice warn">Needs ' + fmt(th - i.bal.balance) + " more points before a reward can be redeemed.</div>") + '<button class="btn red" data-act="redeem"' + (ok ? "" : " disabled") + ">Confirm redemption at checkout</button>"; }
+  const promos = st.cfg.promos.filter(p => p.active);
+  return '<div class="grid g2"><div class="card"><h2>Redeem a reward</h2>' + picker(ui.redeemClient) + body + '</div><div class="card"><h2>Active promotions</h2>' + (promos.length ? promos.map(p => "<p><b>" + esc(p.name) + '</b> <span class="pill red">' + (p.kind === "percent" ? p.value + "% off" : money(p.value) + " off") + '</span><br><span class="small muted">' + esc(p.note) + "</span></p>").join("") : '<div class="empty">No active promotions.</div>') + "</div></div>";
+}
+function vSRecipes() {
+  const pend = st.d.queue || [], done = st.d.rdone || [];
+  return '<div class="notice warn"><b>Safety check before approving:</b> no grapes or raisins, onions, garlic, chocolate, xylitol, macadamia nuts, or alcohol. Approving awards ' + fmt(S().recipe_points) + " points.</div><h2>Waiting for review (" + pend.length + ")</h2>" +
+    (pend.length ? pend.map(r => '<div class="card" style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap"><h3>' + esc(r.title) + '</h3><span class="muted small">' + esc(nameOf(r)) + " · for " + esc(r.pet_type) + " · " + esc(fdate(r.created_at)) + '</span></div><div class="grid g2"><div><b class="small">Ingredients</b><p style="white-space:pre-wrap">' + esc(r.ingredients) + '</p></div><div><b class="small">Directions</b><p style="white-space:pre-wrap">' + esc(r.directions) + '</p></div></div><label for="rn' + r.id + '">Note to client (optional)</label><input id="rn' + r.id + '" data-note="' + r.id + '" value="' + esc(ui.notes[r.id] || "") + '"><p style="margin-top:.8rem"><button class="btn" data-act="approveRecipe" data-id="' + r.id + '">Approve and add ' + fmt(S().recipe_points) + ' points</button> <button class="btn text" data-act="declineRecipe" data-id="' + r.id + '">Decline</button></p></div>').join("") : '<div class="empty">No recipes waiting.</div>') +
+    (done.length ? '<h2 style="margin-top:1.5rem">Recently reviewed</h2><div class="card"><div class="scroll"><table><tbody>' + done.map(r => "<tr><td>" + esc(r.title) + "</td><td>" + esc(nameOf(r)) + '</td><td><span class="pill ' + (r.status === "approved" ? "ok" : "red") + '">' + (r.status === "approved" ? "Approved" : "Declined") + "</span></td></tr>").join("") + "</tbody></table></div></div>" : "");
+}
+function vClients() {
+  const list = st.d.clients || [], bm = st.d.bmap || {}, n = ui.newClient, np = ui.newPet;
+  return '<div class="grid g2"><div class="card"><h2>Add a client</h2><p class="muted">Clients sign in with the email you enter here. Their points connect automatically the first time they sign in.</p><label for="n-name">Full name</label><input id="n-name" data-ui="newClient.name" value="' + esc(n.name) + '"><div class="row"><div><label for="n-email">Email</label><input id="n-email" type="email" data-ui="newClient.email" value="' + esc(n.email) + '"></div><div><label for="n-phone">Mobile (optional)</label><input id="n-phone" data-ui="newClient.phone" value="' + esc(n.phone) + '"></div></div><label for="n-pets">Pets (optional)</label><input id="n-pets" placeholder="Luna (Dog), Milo (Cat)" data-ui="newClient.pets" value="' + esc(n.pets) + '"><p style="margin-top:1rem"><button class="btn" data-act="addClient">Add client</button></p></div>' +
+    '<div class="card"><h2>Add a pet</h2><label for="p-client">Client</label><select id="p-client" data-ui="newPet.clientId"><option value="">Choose a client…</option>' + list.map(c => '<option value="' + c.id + '"' + (np.clientId === c.id ? " selected" : "") + ">" + esc(c.full_name) + "</option>").join("") + '</select><div class="row"><div><label for="p-name">Pet name</label><input id="p-name" data-ui="newPet.name" value="' + esc(np.name) + '"></div><div><label for="p-sp">Species</label><select id="p-sp" data-ui="newPet.species">' + ["Dog", "Cat", "Other"].map(x => "<option" + (np.species === x ? " selected" : "") + ">" + x + "</option>").join("") + '</select></div></div><p style="margin-top:1rem"><button class="btn" data-act="addPet">Add pet</button></p></div></div>' +
+    '<div class="card" style="margin-top:1rem"><h2>Clients (' + list.length + ')</h2>' + (list.length ? '<div class="scroll"><table><thead><tr><th>Name</th><th>Pets</th><th>Level</th><th>Balance</th><th>Login</th><th></th></tr></thead><tbody>' + list.map(c => { const b = bm[c.id] || {balance: 0, lifetime: 0}; return "<tr><td><b>" + esc(c.full_name) + '</b><br><span class="small muted">' + esc(c.email) + "</span></td><td>" + esc((c.pets || []).map(p => p.name).join(", ")) + "</td><td>" + esc(tierFor(b.lifetime).name) + "</td><td>" + fmt(b.balance) + "</td><td>" + (c.user_id ? '<span class="pill ok">Signed in before</span>' : '<span class="pill">Not yet</span>') + '</td><td><a class="btn ghost sm" style="text-decoration:none;display:inline-block" href="mailto:' + encodeURIComponent(c.email) + "?subject=" + encodeURIComponent("Your " + S().program_name + " account") + "&body=" + encodeURIComponent("Hi " + c.full_name.split(" ")[0] + ",\n\nSee your points and rewards at " + SITE_URL + "\nEnter this email address and we’ll send you a sign-in link.") + '">Email the site link</a></td></tr>'; }).join("") + "</tbody></table></div>" : '<div class="empty">No clients yet. Add your first one above.</div>') + "</div>";
+}
+function vDash() {
+  const d = st.d.dash; if (!d) return loadingView();
+  const out = d.bals.reduce((a, b) => a + b.balance, 0), liab = d.bals.reduce((a, b) => a + b.balance * tierFor(b.lifetime).value_per_point, 0);
+  const red = d.redeems.reduce((a, r) => a + Number(r.dollars_value || 0), 0);
+  const stat = (b, s) => '<div class="card stat"><b>' + b + "</b><span>" + s + "</span></div>";
+  return '<div class="grid g3">' + stat(d.bals.length, "Clients") + stat(fmt(out), "Points outstanding") + stat(money(liab), "Estimated reward value outstanding") + stat(money(red), "Rewards redeemed") + stat(st.d.badge.recipes, "Recipes waiting for review") + "</div>" +
+    '<div class="card" style="margin-top:1rem"><div style="display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;align-items:center"><h2 style="margin:0">Recent activity</h2><button class="btn ghost sm" data-act="csv">Export points ledger (CSV)</button></div>' + (d.recent.length ? d.recent.map(e => '<p style="margin:.35rem 0"><span class="' + (e.points >= 0 ? "pos" : "neg") + '">' + (e.points >= 0 ? "+" : "") + fmt(e.points) + "</span> " + esc(nameOf(e)) + ' <span class="small muted">· ' + esc(e.note) + " · " + esc(fdate(e.created_at)) + "</span></p>").join("") : '<div class="empty">Nothing yet.</div>') + "</div>";
+}
+
+/* ---------- settings (manager) ---------- */
+const F = (tbl, id, col, type, val, extra) => ' data-tbl="' + tbl + '" data-id="' + id + '" data-col="' + col + '" data-type="' + type + '"' + (type === "bool" ? (val ? " checked" : "") : ' value="' + esc(type === "cents" ? (val / 100) : val) + '"') + (extra || "");
+function vSettings() {
+  const s = S(), tabs = [["points", "Points"], ["appts", "Appointment bonuses"], ["levels", "Levels"], ["promos", "Promotions"], ["recipes", "Recipes"], ["team", "Team"]], t = ui.settingsTab, P = "program_settings";
+  let body = "";
+  if (t === "points") body = '<h2>Points and rewards</h2><div class="row"><div><label for="s1">Program name</label><input id="s1"' + F(P, 1, "program_name", "text", s.program_name) + '></div><div><label for="s2">Points per $1 of eligible spend</label><input id="s2" type="number" min="0" step="0.1"' + F(P, 1, "points_per_dollar", "num", s.points_per_dollar) + '></div><div><label for="s3">Points needed for a reward</label><input id="s3" type="number" min="1" step="50"' + F(P, 1, "reward_threshold", "int", s.reward_threshold) + '></div></div><p class="muted" style="margin-top:1rem">Reward dollar value depends on the client’s level. Edit that under Levels.</p>';
+  if (t === "appts") body = '<h2>Appointment bonuses</h2><p class="muted">Visit bonus points are added on top of purchase points. Turn a type off to hide it from staff.</p><div class="scroll"><table><thead><tr><th>Appointment type</th><th>Bonus points</th><th>Active</th></tr></thead><tbody>' + st.cfg.appts.map(a => '<tr><td><input aria-label="Appointment type name"' + F("appointment_types", a.id, "name", "text", a.name) + '></td><td><input aria-label="Bonus points" type="number" min="0" step="5"' + F("appointment_types", a.id, "bonus_points", "int", a.bonus_points) + '></td><td><input aria-label="Active" type="checkbox"' + F("appointment_types", a.id, "active", "bool", a.active) + "></td></tr>").join("") + '</tbody></table></div><p style="margin-top:1rem"><button class="btn ghost" data-act="addAppt">Add appointment type</button></p>';
+  if (t === "levels") body = '<h2>Levels and point value</h2><p class="muted">Levels are based on all points a client has ever earned. Higher levels make each point worth more when redeeming. The lowest level should start at 0.</p><div class="scroll"><table><thead><tr><th>Level name</th><th>Lifetime points needed</th><th>Value per point ($)</th><th>Reward value</th><th></th></tr></thead><tbody>' + st.cfg.tiers.map(x => '<tr><td><input aria-label="Level name"' + F("tiers", x.id, "name", "text", x.name) + '></td><td><input aria-label="Lifetime points" type="number" min="0" step="100"' + F("tiers", x.id, "min_lifetime_points", "int", x.min_lifetime_points) + '></td><td><input aria-label="Value per point" type="number" min="0" step="0.0005"' + F("tiers", x.id, "value_per_point", "num", x.value_per_point) + '></td><td data-derive="' + x.id + '">' + money(s.reward_threshold * x.value_per_point) + '</td><td><button class="btn text sm" data-act="delTier" data-id="' + x.id + '"' + (st.cfg.tiers.length < 2 ? " disabled" : "") + ">Remove</button></td></tr>").join("") + '</tbody></table></div><p style="margin-top:1rem"><button class="btn ghost" data-act="addTier">Add level</button></p>';
+  if (t === "promos") body = '<h2>Promotions and discounts</h2><p class="muted">Active promotions show in the client app and on the staff redeem screen.</p><div class="scroll"><table><thead><tr><th>Name</th><th>Type</th><th>Amount</th><th>Details shown to clients</th><th>Active</th><th></th></tr></thead><tbody>' + st.cfg.promos.map(p => '<tr><td><input aria-label="Promotion name"' + F("promotions", p.id, "name", "text", p.name) + '></td><td><select aria-label="Discount type" data-tbl="promotions" data-id="' + p.id + '" data-col="kind" data-type="text"><option value="percent"' + (p.kind === "percent" ? " selected" : "") + '>Percent off</option><option value="amount"' + (p.kind === "amount" ? " selected" : "") + '>Dollars off</option></select></td><td><input aria-label="Amount" type="number" min="0" step="1"' + F("promotions", p.id, "value", "num", p.value) + '></td><td><input aria-label="Details"' + F("promotions", p.id, "note", "text", p.note) + '></td><td><input aria-label="Active" type="checkbox"' + F("promotions", p.id, "active", "bool", p.active) + '></td><td><button class="btn text sm" data-act="delPromo" data-id="' + p.id + '">Remove</button></td></tr>').join("") + '</tbody></table></div><p style="margin-top:1rem"><button class="btn ghost" data-act="addPromo">Add promotion</button></p>';
+  if (t === "recipes") body = '<h2>Recipe rewards</h2><label class="chk"><input type="checkbox"' + F(P, 1, "recipe_enabled", "bool", s.recipe_enabled) + '>Let clients submit recipes</label><div class="row"><div><label for="r1">Points per approved recipe</label><input id="r1" type="number" min="0" step="10"' + F(P, 1, "recipe_points", "int", s.recipe_points) + '></div><div><label for="r2">Submissions per client each month</label><input id="r2" type="number" min="1" step="1"' + F(P, 1, "recipe_max_per_month", "int", s.recipe_max_per_month) + '></div></div><label for="r3">Guidelines shown to clients</label><textarea id="r3"' + F(P, 1, "recipe_guidelines", "text", "").replace(' value=""', "") + ">" + esc(s.recipe_guidelines) + "</textarea>";
+  if (t === "team") body = '<h2>Team access</h2><p class="muted">Staff sign in with the same email-link process as clients. Add their work email here and choose their role. Staff can award points, redeem rewards, review recipes, and confirm payments. Managers can also change settings.</p><div class="scroll"><table><thead><tr><th>Email</th><th>Role</th><th></th></tr></thead><tbody>' + (st.d.team || []).map(m => "<tr><td>" + esc(m.email) + '</td><td><span class="pill">' + esc(m.role) + '</span></td><td><button class="btn text sm" data-act="removeTeam" data-email="' + esc(m.email) + '">Remove access</button></td></tr>').join("") + '</tbody></table></div><div class="row" style="margin-top:1rem"><div><label for="t-email">Work email</label><input id="t-email" type="email" data-ui="team.email" value="' + esc(ui.team.email) + '"></div><div><label for="t-role">Role</label><select id="t-role" data-ui="team.role"><option value="staff"' + (ui.team.role === "staff" ? " selected" : "") + '>Staff</option><option value="manager"' + (ui.team.role === "manager" ? " selected" : "") + '>Manager</option></select></div><div><button class="btn" data-act="addTeam">Give access</button></div></div>';
+  return '<div class="subtabs" role="group" aria-label="Settings sections">' + tabs.map(x => '<button data-act="stab" data-v="' + x[0] + '"' + (t === x[0] ? ' aria-current="page"' : "") + ">" + x[1] + "</button>").join("") + '</div><div class="card">' + body + "</div>";
+}
+
+/* ---------- render ---------- */
+const VIEW = {c_home: cHome, c_activity: cActivity, c_recipes: cRecipes, c_offers: cOffers, award: vAward, redeem: vRedeem, s_recipes: vSRecipes, clients: vClients, dash: vDash, settings: vSettings};
+function render() {
+  if (!sb) { $app.innerHTML = header() + '<main><div class="card"><h1>Can’t load the app</h1><p class="muted">A required file didn’t load. Check your internet connection and refresh the page.</p></div></main>'; return; }
+  let main;
+  if (!st.ready) main = loadingView();
+  else if (!st.user) main = signinView();
+  else if (st.role === "error") main = '<div class="signin card"><h1>Something went wrong</h1><p class="muted">' + esc(ui.error) + '</p><p><button class="btn" data-act="retry">Try again</button> <button class="btn ghost" data-act="signout">Sign out</button></p></div>';
+  else if (st.role === "client" && !st.client) main = '<div class="signin card"><h1>We couldn’t find your club account</h1><p class="muted">You’re signed in as <b>' + esc(st.user.email) + "</b>, but the clinic doesn’t have a club account for that email yet. Please ask the front desk to add you using this email address, then refresh this page.</p></div>";
+  else main = ui.loading ? loadingView() : (VIEW[ui.tab] ? VIEW[ui.tab]() : "");
+  $app.innerHTML = header() + tabsNav() + "<main>" + main + "</main>" + footer();
+  const f = $app.querySelector("[data-focus]"); if (f) f.focus();
+}
+
+/* ---------- actions ---------- */
+async function run(fn, ok) {
+  if (ui.busy) return; ui.busy = true;
+  try { const r = await fn(); if (ok) toast(typeof ok === "function" ? ok(r) : ok); return r; }
+  catch (e) { toast(msg(e)); } finally { ui.busy = false; }
+}
+async function saveField(el) {
+  const d = el.dataset; let v;
+  if (d.type === "bool") v = el.checked;
+  else if (d.type === "num" || d.type === "int" || d.type === "cents") {
+    v = parseFloat(el.value); if (!(v >= 0)) v = 0;
+    if (d.type === "int") v = Math.round(v); if (d.type === "cents") v = Math.round(v * 100);
+  } else v = el.value.trim();
+  if (d.col === "name" && !v) { toast("Name can’t be empty."); return; }
+  await run(async () => {
+    const rows = await q(sb.from(d.tbl).update({[d.col]: v}).eq("id", d.id).select());
+    if (!rows || !rows.length) throw new Error("Not saved. You may not have permission.");
+    await loadConfig();
+    document.querySelectorAll("[data-derive]").forEach(n => { const tr = st.cfg.tiers.find(x => x.id === n.dataset.derive); if (tr) n.textContent = money(S().reward_threshold * tr.value_per_point); });
+    if (d.col === "program_name") render();
+  }, "Saved");
+}
+const A = {
+  async sendLink() {
+    const email = ui.email.trim().toLowerCase();
+    if (!/^\S+@\S+\.\S+$/.test(email)) return toast("Enter a valid email address.");
+    await run(async () => {
+      const {error} = await sb.auth.signInWithOtp({email, options: {emailRedirectTo: location.origin + "/", shouldCreateUser: true}});
+      if (error) throw new Error(/rate|limit|seconds/i.test(error.message) ? "Too many sign-in emails were requested. Please wait a few minutes and try again." : error.message);
+      ui.email = email; ui.sent = true; render();
+    });
+  },
+  again() { ui.sent = false; render(); },
+  async signout() { try { await sb.auth.signOut(); } catch (e) {} resetSession(); render(); },
+  retry() { st.boot = null; st.role = null; sb.auth.getSession().then(r => { if (r.data.session) bootstrap(r.data.session); else { resetSession(); render(); } }); },
+  tab(el) { go(el.dataset.v); },
+  stab(el) { ui.settingsTab = el.dataset.v; render(); },
+  async submitRecipe() {
+    const r = ui.recipe;
+    if (!r.title.trim() || !r.ingredients.trim() || !r.steps.trim()) return toast("Add a recipe name, ingredients, and directions.");
+    const ok = await run(async () => { await rpc("submit_recipe", {p_title: r.title, p_pet: r.pet, p_ingredients: r.ingredients, p_directions: r.steps}); return true; }, "Recipe submitted for review.");
+    if (ok) { ui.recipe = {title: "", pet: "Dogs", ingredients: "", steps: ""}; reload(); }
+  },
+  async approveRecipe(el) { const ok = await run(() => rpc("review_recipe", {p_id: el.dataset.id, p_approve: true, p_note: ui.notes[el.dataset.id] || null}).then(() => true), "Approved. Points added."); if (ok) reload(); },
+  async declineRecipe(el) { const ok = await run(() => rpc("review_recipe", {p_id: el.dataset.id, p_approve: false, p_note: ui.notes[el.dataset.id] || null}).then(() => true), "Recipe declined."); if (ok) reload(); },
+  async award() {
+    const a = ui.award, spend = parseFloat(a.spend);
+    if (!ui.awardClient) return toast("Choose a client.");
+    if (!a.ref.trim()) return toast("Enter the invoice or visit number.");
+    if (!a.typeId) return toast("Choose an appointment type.");
+    if (!(spend >= 0)) return toast("Enter the eligible spend (0 if none).");
+    const r = await run(() => rpc("award_points", {p_client: ui.awardClient, p_invoice: a.ref, p_type: a.typeId, p_spend: spend}), r => fmt(r.awarded) + " points added. New balance: " + fmt(r.balance) + ".");
+    if (r) { ui.award = {ref: "", typeId: "", spend: ""}; reload(); }
+  },
+  async redeem() {
+    const r = await run(() => rpc("redeem_reward", {p_client: ui.redeemClient}), r => money(r.dollars) + " reward redeemed. Remaining: " + fmt(r.balance) + " points.");
+    if (r) reload();
+  },
+  async addClient() {
+    const n = ui.newClient, email = n.email.trim().toLowerCase();
+    if (!n.name.trim() || !/^\S+@\S+\.\S+$/.test(email)) return toast("Enter the client’s name and a valid email.");
+    const ok = await run(async () => {
+      const c = await q(sb.from("clients").insert({full_name: n.name.trim(), email, phone: n.phone.trim() || null}).select().single());
+      const pets = n.pets.split(",").map(x => x.trim()).filter(Boolean).map(x => { const m = /^(.+?)\s*\((.+)\)\s*$/.exec(x); return {client_id: c.id, name: m ? m[1] : x, species: m ? m[2] : "Dog"}; });
+      if (pets.length) await q(sb.from("pets").insert(pets));
+      return true;
+    }, "Client added. They can sign in with that email.");
+    if (ok) { ui.newClient = {name: "", email: "", phone: "", pets: ""}; reload(); }
+  },
+  async addPet() {
+    const p = ui.newPet; if (!p.clientId || !p.name.trim()) return toast("Choose a client and enter the pet’s name.");
+    const ok = await run(() => q(sb.from("pets").insert({client_id: p.clientId, name: p.name.trim(), species: p.species})).then(() => true), "Pet added.");
+    if (ok) { ui.newPet.name = ""; reload(); }
+  },
+  async addAppt() { const ok = await run(() => q(sb.from("appointment_types").insert({name: "New appointment type", bonus_points: 50})).then(() => true)); if (ok) { await loadConfig(); render(); } },
+  async addTier() { const max = Math.max(0, ...st.cfg.tiers.map(t => t.min_lifetime_points)); const ok = await run(() => q(sb.from("tiers").insert({name: "New level", min_lifetime_points: max + 5000, value_per_point: 0.02})).then(() => true)); if (ok) { await loadConfig(); render(); } },
+  async delTier(el) { if (st.cfg.tiers.length < 2) return; const ok = await run(() => q(sb.from("tiers").delete().eq("id", el.dataset.id)).then(() => true)); if (ok) { await loadConfig(); render(); } },
+  async addPromo() { const ok = await run(() => q(sb.from("promotions").insert({name: "New promotion", kind: "percent", value: 10, note: "Describe who qualifies.", active: false})).then(() => true)); if (ok) { await loadConfig(); render(); } },
+  async delPromo(el) { const ok = await run(() => q(sb.from("promotions").delete().eq("id", el.dataset.id)).then(() => true)); if (ok) { await loadConfig(); render(); } },
+  async addTeam() {
+    const em = ui.team.email.trim().toLowerCase(); if (!/^\S+@\S+\.\S+$/.test(em)) return toast("Enter a valid work email.");
+    const ok = await run(() => rpc("set_staff_role", {p_email: em, p_role: ui.team.role}).then(() => true), "Access granted. They sign in with that email.");
+    if (ok) { ui.team.email = ""; reload(); }
+  },
+  async removeTeam(el) { const ok = await run(() => rpc("set_staff_role", {p_email: el.dataset.email, p_role: "client"}).then(() => true), "Access removed."); if (ok) reload(); },
+  async csv() {
+    await run(async () => {
+      const rows = await q(sb.from("point_ledger").select("*, clients(full_name)").order("created_at", {ascending: false}).limit(20000));
+      const qt = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+      const lines = [["Date", "Client", "Type", "Points", "Description", "Reference"]].concat(rows.map(e => [e.created_at, nameOf(e), e.entry_type, e.points, e.note, e.invoice_ref || ""]));
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.map(r => r.map(qt).join(",")).join("\n")], {type: "text/csv"}));
+      a.download = "pet-club-points-ledger.csv"; document.body.appendChild(a); a.click(); a.remove();
+    }, "Ledger exported.");
+  }
+};
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]"); if (!el || !A[el.dataset.act]) return;
+  A[el.dataset.act](el, e);
+});
+document.addEventListener("input", e => {
+  const el = e.target; if (!el.dataset) return;
+  if (el.dataset.note) { ui.notes[el.dataset.note] = el.value; return; }
+  if (!el.dataset.ui) return;
+  setPath(ui, el.dataset.ui, el.value);
+  if (el.dataset.ui === "filter") { const p = document.getElementById("pick"); if (p) p.innerHTML = pickOptions(ui.tab === "redeem" ? ui.redeemClient : ui.awardClient); }
+  if (el.dataset.ui.startsWith("award.")) { const p = document.getElementById("award-preview"); if (p) p.innerHTML = awardPreview(); }
+});
+document.addEventListener("change", async e => {
+  const el = e.target; if (!el.dataset) return;
+  if (el.hasAttribute("data-pick")) {
+    if (ui.tab === "redeem") ui.redeemClient = el.value; else ui.awardClient = el.value;
+    ui.loading = true; render();
+    try { await loadInfo(el.value); } catch (err) { toast(msg(err)); }
+    ui.loading = false; render(); return;
+  }
+  if (el.dataset.tbl) { saveField(el); return; }
+  if (el.dataset.ui === "award.typeId") { const p = document.getElementById("award-preview"); if (p) p.innerHTML = awardPreview(); }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target && e.target.id === "em") A.sendLink();
+});
+
+/* ---------- start ---------- */
+async function init() {
+  render();
+  if (!sb) return;
+  sb.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_OUT") { resetSession(); render(); }
+    else if (session && event === "SIGNED_IN") setTimeout(() => bootstrap(session), 0);
+  });
+  try {
+    const {data} = await sb.auth.getSession();
+    if (data.session) await bootstrap(data.session); else { st.ready = true; render(); }
+  } catch (e) { st.ready = true; render(); }
+}
+init();
+</script>
+</body>
+</html>
